@@ -1,5 +1,5 @@
 {% set name = "acro" %}
-{% set version = "0.4.10" %}
+{% set version = "0.4.11" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2a1ad6f0b43447730fd8a779c1c0767a8b3e5d9c3e858ad3ad8d3c5d762a881d
+  sha256: 116d5366ff4d637399686d7a794790e6e88835c9633d8c2c836dc1592198475f
 
 build:
   number: 0
@@ -25,7 +25,7 @@ requirements:
     - matplotlib-base
     - numpy
     - openpyxl
-    - pandas >=1.5.0,<2.3
+    - pandas <=2.3.3
     - PyYAML
     - statsmodels
 
