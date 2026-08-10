@@ -28,6 +28,8 @@ requirements:
     - pandas <=2.3.3
     - PyYAML
     - statsmodels
+    - rdflib
+    - tabulate
 
 test:
   imports:
