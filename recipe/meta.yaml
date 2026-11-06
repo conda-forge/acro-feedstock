@@ -1,5 +1,5 @@
 {% set name = "acro" %}
-{% set version = "1.0.2" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,20 +7,21 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ea1c6c3a8f93e55cc82c55232fe9d4198a4e1a1b288fd1193b13ff26890d5c58
+  sha256: d807c830f50499d67bf1354b6353e513f41ad401bfd06fc8170e381396758dc2
 
 build:
   number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - python {{ python_min }}
-    - setuptools
+    - setuptools >=77
     - pip
   run:
     - python >={{ python_min }}
+    - lifelines
     - lxml
     - matplotlib-base
     - numpy
@@ -36,6 +37,7 @@ test:
     - acro
   commands:
     - pip check
+    - python -c "from acro import ACRO; ACRO()"
   requires:
     - python {{ python_min }}
     - pip
